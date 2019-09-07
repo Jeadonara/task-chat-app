@@ -1,0 +1,2 @@
+export const ENTER_CHATROOM = 'ENTER_CHATROOM';
+export const GET_MESSAGES = 'GET_MESSAGES';
