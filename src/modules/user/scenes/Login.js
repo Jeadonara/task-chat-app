@@ -23,15 +23,15 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        userService.getUser((name) => this.initUser(name));
+        userService.getUser((user) => this.initUser(user));
     }
 
-    initUser = (name) => {
-        if (this.isUsernameValid(name)) {
+    initUser = (user) => {
+        if (user != null && this.isUsernameValid(user.name)) {
             this.setState({
-                name: name,
+                name: user.name,
                 isAlreadyRegistered: true
-            }, () => this.props.login(name));
+            }, () => this.props.login(user.name));
         } else {
             this.setState({isAlreadyRegistered: false})
         }
@@ -69,7 +69,7 @@ class Login extends React.Component {
                     <Text style={styles.title}>WELCOME</Text>
                     <Text style={styles.name}>{name}</Text>
                     <TouchableOpacity
-                        style={[styles.textSubmitButton, {opacity: false === this.isUsernameValid(name) ? 1 : 0.3}]}
+                        style={[styles.textSubmitButton, {opacity: 1}]}
                         onPress={() => this.submitLoginRequest(name)}
                         disabled={false === this.isUsernameValid(name)}
                     >
@@ -84,7 +84,7 @@ class Login extends React.Component {
         let name = this.state.name;
         return (
             <View style={STYLES.screenContainer}>
-                <View style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop: 200}}>
+                <View style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop: 100}}>
                     <Text style={styles.title}>Login With User Name</Text>
                     <TextInput placeholder="name"
                                style={[styles.textInput]}

@@ -117,7 +117,7 @@ class ChatRoom extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : null}
+                behavior={"padding"}
                 keyboardVerticalOffset={Header.HEIGHT + 20}
                 style={STYLES.screenContainer}>
                 <ScrollView style={{flex: 2, margin: 16, width: DIMENSION_WIDTH}}
